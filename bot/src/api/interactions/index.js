@@ -82,7 +82,7 @@ const handleInteractions = {
                     steamUID
                 }
             })
-            if (result.status == 200 ) return `Removed ${steamUID} from whitelist`
+            if (result.status == 200 ) return `Unbanned ${steamUID}`
         
         } catch (error) {
 
