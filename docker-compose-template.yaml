@@ -35,6 +35,7 @@ services:
       - app
     depends_on:
       - app
+    restart: always
 
   app:
     build: ./bot
@@ -46,6 +47,7 @@ services:
       - DISCORD_MODERATOR_ROLE=%s
     volumes:
       - ./bot/src:/app/src
+    restart: always
 
   cftools:
     build: ./cftools
@@ -57,3 +59,4 @@ services:
       - CFTOOLS_BANLIST_ID=%s
     volumes:
       - ./cftools/src:/app/src
+    restart: always
