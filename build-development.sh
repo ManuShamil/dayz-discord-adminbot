@@ -53,16 +53,16 @@ printf -v NGINX_COMPOSE_TEMPLATE_EVALED "$NGINX_COMPOSE_TEMPLATE" \
 
 echo "$NGINX_COMPOSE_TEMPLATE_EVALED" > ./nginx/conf.d/default.conf # create docker-compose.yaml using the template
 
-# if [ ! -e "./certbot/store" ]; then
-#     mkdir -p "./certbot/store"
-#     curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "./certbot/store/options-ssl-nginx.conf"
-#     curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "./certbot/store/ssl-dhparams.pem"
+if [ ! -e "./certbot/store" ]; then
+    mkdir -p "./certbot/store"
+    curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "./certbot/store/options-ssl-nginx.conf"
+    curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "./certbot/store/ssl-dhparams.pem"
 
-# fi
+fi
 
-# if [ ! -e "./certbot/store/live/$DOMAIN_NAME/fullchain.pem" ] || [ ! -e "./certbot/store/live/$DOMAIN_NAME/privkey.pem" ]; then
-#     docker-compose run --rm dummycertbot  # this generates a dummy certificate for our domain and stores it in ./certbot/store
-# fi
+if [ ! -e "./certbot/store/live/$DOMAIN_NAME/fullchain.pem" ] || [ ! -e "./certbot/store/live/$DOMAIN_NAME/privkey.pem" ]; then
+    docker-compose run --rm dummycertbot  # this generates a dummy certificate for our domain and stores it in ./certbot/store
+fi
 
 # deploy the app
 docker-compose up --force-recreate -d nginx
