@@ -163,18 +163,10 @@ app.delete('/api/cftools/ban', async ( req, res, next ) => {
         if ( steamUID == undefined )
             throw new Error(`BODY PARSE ERROR`)
 
-        let bans = await client.listBans({
+        await cftools.deleteBans({
             playerId: SteamId64.of( steamUID ),
-            list: banlist
-        });
-
-        for ( ban of bans )
-        {
-            await cftools.deleteBan({
-                ban: ban,
-                list: Banlist.of(process.env.CFTOOLS_BANLIST_ID || '')
-            })  
-        }
+            list: Banlist.of(process.env.CFTOOLS_BANLIST_ID || '')
+        })
 
         res.json({
             status: 200,
@@ -184,6 +176,8 @@ app.delete('/api/cftools/ban', async ( req, res, next ) => {
 
 
     } catch (error) {
+
+        console.log( error )
         console.log(`DELETE: /api/cftools/ban [BODY PARSE ERROR]`)
 
         res.status(400).json( {

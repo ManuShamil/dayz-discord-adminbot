@@ -12,6 +12,6 @@
   "dependencies": {
     "express": "^4.17.3",
     "morgan": "1.10.0",
-    "cftools-sdk": "1.7.0"
+    "cftools-sdk": "https://github.com/ManuShamil/cftools-sdk/tarball/main"
   }
 }
