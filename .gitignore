@@ -6,3 +6,4 @@ logs/**
 devenv.sh
 **/node_modules
 **/package-lock.json
+**/cftools-sdk
