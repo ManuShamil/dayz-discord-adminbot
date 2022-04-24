@@ -168,13 +168,13 @@ app.delete('/api/cftools/ban', async ( req, res, next ) => {
             list: banlist
         });
 
-        bans.forEach( ban => {
+        for ( ban of bans )
+        {
             await cftools.deleteBan({
                 ban: ban,
                 list: Banlist.of(process.env.CFTOOLS_BANLIST_ID || '')
             })  
-        })
-
+        }
 
         res.json({
             status: 200,
