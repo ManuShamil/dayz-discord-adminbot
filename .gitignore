@@ -1,0 +1,8 @@
+docker-compose.yaml
+test.sh
+**/conf.d/default.conf
+**/store
+logs/**
+devenv.sh
+**/node_modules
+**/package-lock.json
