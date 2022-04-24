@@ -1,7 +1,9 @@
 
 if [ "$DOMAIN_NAME" == "" ] || [ "$EMAIL" == "" ] \
-|| [ "$APP_KEY" == "" ] || [ "$BOT_TOKEN" == "" ] \
-|| [ "$DISCORD_APP_ID" == "" ]; then
+|| [ "$APP_KEY" == "" ] || [ "$BOT_TOKEN" == "" ] || [ "$DISCORD_APP_ID" == "" ]\
+|| [ "$CFTOOLS_APP_ID" == "" ] || [ "$CFTOOLS_SECRET" == "" ] \
+|| [ "$CFTOOLS_SERVERID" == "" ] || [ "$CFTOOLS_BANLIST_ID" == "" ] \
+|| [ "$DISCORD_MODERATOR_ROLE" == "" ]; then
 
     echo 'Failed to set value for $DOMAIN_NAME and $EMAIL'
     echo '###################################################'
@@ -9,11 +11,15 @@ if [ "$DOMAIN_NAME" == "" ] || [ "$EMAIL" == "" ] \
     echo 'use `export EMAIL="user@domain"`'
     echo 'use `export APP_KEY= discord application key`'
     echo 'use `export BOT_TOKEN= bot token`'
-    echo 'use `export DISCORD_APP_ID= application id`'
+    echo 'use `export DISCORD_APP_ID= Discord Application id`'
+    echo 'use `export DISCORD_MODERATOR_ROLE= Discord Moderator Role id`'
+    echo 'use `export CFTOOLS_APP_ID= CFTools APPLICATION id`'
+    echo 'use `export CFTOOLS_SECRET= APPLICATION SECRET`'
+    echo 'use `export CFTOOLS_SERVERID= SERVER ID`'
+    echo 'use `export CFTOOLS_BANLIST_ID= BANLIST ID`'
 
     exit 1
 fi
-
 
 # generate docker-compose.yaml with template
 
@@ -25,7 +31,12 @@ printf -v DOCKER_COMPOSE_TEMPLATE_EVALED "$DOCKER_COMPOSE_TEMPLATE" \
     "$DOMAIN_NAME" \
     "$APP_KEY" \
     "$BOT_TOKEN" \
-    "$DISCORD_APP_ID"
+    "$DISCORD_APP_ID" \
+    "$DISCORD_MODERATOR_ROLE" \
+    "$CFTOOLS_APP_ID" \
+    "$CFTOOLS_SECRET" \
+    "$CFTOOLS_SERVERID" \
+    "$CFTOOLS_BANLIST_ID"
 
 
 echo "$DOCKER_COMPOSE_TEMPLATE_EVALED" > docker-compose.yaml # create docker-compose.yaml using the template
