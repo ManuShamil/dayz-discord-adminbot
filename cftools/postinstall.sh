@@ -1,4 +1,3 @@
 cd ./node_modules/cftools-sdk
 
-npm install
-npm run build
+NODE_ENV=development npm install && npm run build
