@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "./postinstall.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
-    "morgan": "1.10.0"
+    "morgan": "1.10.0",
+    "cftools-sdk": "https://github.com/ManuShamil/cftools-sdk/tarball/main"
   }
 }

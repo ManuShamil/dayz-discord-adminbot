@@ -8,7 +8,7 @@ const {
     CFToolsClientBuilder, 
     SteamId64,
     Banlist
-} = require('../cftools-sdk/lib')
+} = require('cftools-sdk')
 
 const cftools = new CFToolsClientBuilder()
     .withServerApiId( process.env.CFTOOLS_SERVERID )
